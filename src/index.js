@@ -3,10 +3,7 @@ import ReactDOM from 'react-dom';
 import '../src/style.css';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 
-import { Home } from './components/index';
-import { Posts } from './components/index';
-import { Profile } from './components/index';
-import { SignUp } from './components/index';
+import { Home, Posts, Profile, SignUp, LogIn } from './components/index';
 
 const App = () => {
     return (
@@ -22,8 +19,9 @@ const App = () => {
                         <Link to={'/Profile'} className='navLink'>Profile</Link>
                     </div>
                     <div id='signInOutButtons'>
+                        <button className='buttons'><Link to={'/Login'} className='navLink'>Log-In</Link></button>
                         <button className='buttons'><Link to={'/SignUp'} className='navLink'>Sign-Up</Link></button>
-                        <button className='buttons'>Logout</button>
+                        <button className='buttons'><Link to='' className='navLink'>Log-Out</Link></button>
                     </div>
                 </nav>
                 <div id='main-section'>
@@ -36,6 +34,9 @@ const App = () => {
                         </Route>
                         <Route path="/Profile">
                             <Profile />
+                        </Route>
+                        <Route path="/Login">
+                            <LogIn />
                         </Route>
                         <Route exact path="/SignUp">
                             <SignUp />

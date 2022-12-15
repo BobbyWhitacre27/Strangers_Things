@@ -19,17 +19,17 @@
 #title {
     color: white;
     text-align: center;
-    width: 200px;
+    width: 250px;
 }
 
 #navlinks {
     text-align: center;
-    width: 200px;
+    width: 250px;
 }
 
 #signInOutButtons {
     text-align: center;
-    width: 200px;
+    width: 250px;
 }
 
 .navLink {
@@ -56,6 +56,9 @@
 #postDiv {
     text-align: left;
     padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     background-color: white;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
@@ -94,4 +97,23 @@ input {
     margin-left: 5px;
     border: solid;
     padding: 4px;
+}
+
+#posttop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#postbottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#postprice {
+    text-align: right;
+    right: 10px;
 }

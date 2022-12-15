@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -12,7 +12,7 @@ const SignUp = () => {
     setPassword('')
   }
 
-  const handleChange = (event) => {
+  const handleUsername = (event) => {
     setUsername(event.target.value)
   }
 
@@ -20,21 +20,40 @@ const SignUp = () => {
     setPassword(event.target.value)
   }
 
-  return (
-    <div id='container'>
-      <form onSubmit={handleSubmit}>
-        <h1 id='welcomeSignUp'>Welcome to Stranger's Things!</h1>
-        <p id='signUpInstructions'>To create an account please create a username and password below.</p>
-        <div>
-          <label htmlFor='username'>Username:</label>
-          <input type='text' name='username' value={username} onChange={handleChange} />
-          <label htmlFor='password'>Password:</label>
-          <input type='password' name='password' value={password} onChange={handlePassword} />
-          <button type='submit' className='button1'>Submit</button>
-        </div>
-      </form>
-    </div>
-  )
+  const postNewUser = async () => {
+    try {
+      const response = await fetch('https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/users/register',
+        {method: "POST"}
+      )
+      const newUser = await response.json();
+      console.log(newUser)
+      handleUsername(newUser.user.username);
+      handlePassword(newUser.user.password)
+    } catch (err) {
+      console.log('err')
+    }
+  }
+
+  useEffect(() => {
+    postNewUser();
+  }, []);
+
+
+return (
+  <div id='container'>
+    <form onSubmit={handleSubmit}>
+      <h1 id='welcomeSignUp'>Join Stranger's Things!</h1>
+      <p id='signUpInstructions'>To create an account please set up a username and password below.</p>
+      <div>
+        <label htmlFor='username'>Username:</label>
+        <input type='text' name='username' value={username} onChange={handleUsername} />
+        <label htmlFor='password'>Password:</label>
+        <input type='password' name='password' value={password} onChange={handlePassword} />
+        <button type='submit' className='button1'>Submit</button>
+      </div>
+    </form>
+  </div>
+)
 }
 
 export default SignUp;

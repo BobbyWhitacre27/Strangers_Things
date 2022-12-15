@@ -31,11 +31,15 @@ const Posts = () => {
             <div id='postsDiv'>
                 {posts.map((e, i) => {
                     return (<div id='postDiv' key={i}>
-                        <h2>{e.title}</h2>
-                        <h3>{e.price}</h3>
-                        <ul>{e.description}</ul>
-                        <ul>{e.willDeliver === true ? 'Will Deliver' : "Will Not Deliver"}</ul>
-                        <ul>Posted by: {e.author.username} {e.createdAt}</ul>
+                        <div id='posttop'>
+                            <h2 id='posttitle'>{e.title}</h2>
+                            <h3 id='postprice'>{e.price}</h3>
+                        </div>
+                        <ul id='postdescription'>{e.description}</ul>
+                        <div id='postbottom'>
+                            <ul id='postedby'>Posted by: {e.author.username} {e.createdAt}</ul>
+                            <ul id='postdelivery'>{e.willDeliver === true ? 'Will Deliver' : "Will Not Deliver"}</ul>
+                        </div>
                     </div>)
                 })}
             </div>
