@@ -5,35 +5,93 @@
     box-sizing: border-box;
   }
 
-body {
-    background-color: lightgray;
-}
 
 #navbar {
-    background-color: lightblue;
+    background-color:rgb(20, 109, 73);
     padding-top: 10px;
     padding-bottom: 10px;
-    border-top: 1px solid black;
     border-bottom: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#title {
+    color: white;
+    text-align: center;
+    width: 200px;
 }
 
 #navlinks {
     text-align: center;
+    width: 200px;
 }
 
-a {
+#signInOutButtons {
+    text-align: center;
+    width: 200px;
+}
+
+.navLink {
+    color: white;
     padding-left: 5px;
     padding-right: 5px;
 }
 
-#logoutButton {
-    position: absolute;
-    right: 50px;
-    padding: 0px;
+.buttons {
+    margin-left: 5px;
+    margin-right: 5px;
+    padding: 4px;
     border: 1px solid black;
+    color: white;
+    background-color: black;
+    border-radius: 25px;
 }
 
 #main-section {
     text-align: center;
     margin-top: 10px;
+}
+
+#postDiv {
+    text-align: left;
+    padding-left: 20px;
+    background-color: white;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+ul {
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+input {
+    border: solid;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 2px
+}
+
+#welcomeSignUp {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+#signUpInstructions {
+    margin-bottom: 20px;
+}
+
+.button1 {
+    margin-left: 5px;
+    border: solid;
+    padding: 4px;
 }
