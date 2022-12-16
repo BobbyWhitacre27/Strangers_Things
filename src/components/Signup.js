@@ -6,10 +6,13 @@ const SignUp = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    postNewUser()
     console.log(username)
     console.log(password)
     setUsername('')
     setPassword('')
+
+
   }
 
   const handleUsername = (event) => {
@@ -23,21 +26,25 @@ const SignUp = () => {
   const postNewUser = async () => {
     try {
       const response = await fetch('https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/users/register',
-        {method: "POST"}
-      )
+        {method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user: {
+            username: username,
+            password: password
+          }
+      }
+      )})
       const newUser = await response.json();
       console.log(newUser)
       handleUsername(newUser.user.username);
       handlePassword(newUser.user.password)
     } catch (err) {
-      console.log('err')
+      console.log('err', err)
     }
   }
-
-  useEffect(() => {
-    postNewUser();
-  }, []);
-
 
 return (
   <div id='container'>

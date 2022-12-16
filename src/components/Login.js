@@ -8,16 +8,40 @@ const LogIn = () => {
     event.preventDefault()
     console.log(username)
     console.log(password)
+    userLogIn()
     setUsername('')
     setPassword('')
   }
 
-  const handleChange = (event) => {
+  const handleUsername = (event) => {
     setUsername(event.target.value)
   }
 
   const handlePassword = (event) => {
     setPassword(event.target.value)
+  }
+
+  const userLogIn = async () => {
+    try {
+      const response = await fetch('https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/users/login',
+        {method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user: {
+            username: username,
+            password: password
+          }
+      }
+      )})
+      const newUser = await response.json();
+      console.log(newUser)
+      handleUsername(newUser.user.username);
+      handlePassword(newUser.user.password)
+    } catch (err) {
+      console.log('err', err)
+    }
   }
 
   return (
@@ -27,7 +51,7 @@ const LogIn = () => {
         <p id='signUpInstructions'>Please log-in to your account below.</p>
         <div>
           <label htmlFor='username'>Username:</label>
-          <input type='text' name='username' value={username} onChange={handleChange} />
+          <input type='text' name='username' value={username} onChange={handleUsername} />
           <label htmlFor='password'>Password:</label>
           <input type='password' name='password' value={password} onChange={handlePassword} />
           <button type='submit' className='button1'>Submit</button>
