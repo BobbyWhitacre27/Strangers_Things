@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, Link, BrowserRouter, Switch, Route } from 'react';
+import { SignUp } from './index'
 
 const LogIn = () => {
   const [username, setUsername] = useState('');
@@ -37,8 +38,9 @@ const LogIn = () => {
       )})
       const newUser = await response.json();
       console.log(newUser)
+      newUser.success === true ? document.getElementById('loginPopUp').innerHTML = newUser.data.message : document.getElementById('loginPopUp').innerHTML = newUser.error.message;
       handleUsername(newUser.user.username);
-      handlePassword(newUser.user.password)
+      handlePassword(newUser.user.password);
     } catch (err) {
       console.log('err', err)
     }
@@ -47,9 +49,9 @@ const LogIn = () => {
   return (
     <div id='container'>
       <form onSubmit={handleSubmit}>
-        <h1 id='welcomeSignUp'>Welcome to Stranger's Things!</h1>
+        <h1 id='welcomeSignUp'>Log-In to Stranger's Things!</h1>
         <p id='signUpInstructions'>Please log-in to your account below.</p>
-        <div>
+        <div id='loginDiv'>
           <label htmlFor='username'>Username:</label>
           <input type='text' name='username' value={username} onChange={handleUsername} />
           <label htmlFor='password'>Password:</label>
@@ -57,6 +59,10 @@ const LogIn = () => {
           <button type='submit' className='button1'>Submit</button>
         </div>
       </form>
+      <br></br>
+      <p>Don't have an account? <a href='/Signup'>Sign-Up</a></p>
+      <br></br>
+      <h3 id='loginPopUp'></h3>
     </div>
   )
 }

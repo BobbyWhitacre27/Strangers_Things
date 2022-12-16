@@ -11,8 +11,6 @@ const SignUp = () => {
     console.log(password)
     setUsername('')
     setPassword('')
-
-
   }
 
   const handleUsername = (event) => {

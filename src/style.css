@@ -117,3 +117,7 @@ input {
     text-align: right;
     right: 10px;
 }
+
+#loginPopUp {
+    color: red;
+}
