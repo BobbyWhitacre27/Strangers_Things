@@ -1,17 +1,17 @@
-import React, { useState, Link, BrowserRouter, Switch, Route } from 'react';
-import { SignUp } from './index'
+import React, { useState } from 'react';
 
 const LogIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [token, setToken] = useState('')
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log(username)
-    console.log(password)
     userLogIn()
     setUsername('')
     setPassword('')
+    console.log(username)
+    console.log(password)
   }
 
   const handleUsername = (event) => {
@@ -39,6 +39,10 @@ const LogIn = () => {
       const newUser = await response.json();
       console.log(newUser)
       newUser.success === true ? document.getElementById('loginPopUp').innerHTML = newUser.data.message : document.getElementById('loginPopUp').innerHTML = newUser.error.message;
+      const token = newUser.data.token
+      setToken(token)
+      console.log(token)
+      window.localStorage.setItem('token', token)
       handleUsername(newUser.user.username);
       handlePassword(newUser.user.password);
     } catch (err) {
@@ -49,7 +53,7 @@ const LogIn = () => {
   return (
     <div id='container'>
       <form onSubmit={handleSubmit}>
-        <h1 id='welcomeSignUp'>Log-In to Stranger's Things!</h1>
+        <h1 id='welcomeSignUp'>Log-In</h1>
         <p id='signUpInstructions'>Please log-in to your account below.</p>
         <div id='loginDiv'>
           <label htmlFor='username'>Username:</label>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -37,6 +37,7 @@ const SignUp = () => {
       )})
       const newUser = await response.json();
       console.log(newUser)
+      newUser.success === true ? document.getElementById('welcomePopUp').innerHTML = `${newUser.data.message} Please ${"<a href='/Login'>click here</a>"} to login` : document.getElementById('welcomePopUp').innerHTML = newUser.error.message;
       handleUsername(newUser.user.username);
       handlePassword(newUser.user.password)
     } catch (err) {
@@ -47,7 +48,7 @@ const SignUp = () => {
 return (
   <div id='container'>
     <form onSubmit={handleSubmit}>
-      <h1 id='welcomeSignUp'>Join Stranger's Things!</h1>
+      <h1 id='welcomeSignUp'>Sign-Up</h1>
       <p id='signUpInstructions'>To create an account please set up a username and password below.</p>
       <div>
         <label htmlFor='username'>Username:</label>
@@ -56,6 +57,7 @@ return (
         <input type='password' name='password' value={password} onChange={handlePassword} />
         <button type='submit' className='button1'>Submit</button>
       </div>
+      <div id='welcomePopUp'></div>
     </form>
   </div>
 )

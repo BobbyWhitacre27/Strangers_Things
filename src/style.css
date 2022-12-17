@@ -28,7 +28,8 @@
 }
 
 #signInOutButtons {
-    text-align: center;
+    text-align: right;
+    padding-right: 25px;
     width: 250px;
 }
 

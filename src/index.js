@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import '../src/style.css';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 
-import { Home, Posts, Profile, SignUp, LogIn } from './components/index';
+import { Home, Posts, Profile, SignUp, LogIn, token, logOut } from './components/index';
 
 const App = () => {
     return (
@@ -19,9 +19,8 @@ const App = () => {
                         <Link to={'/Profile'} className='navLink'>Profile</Link>
                     </div>
                     <div id='signInOutButtons'>
-                        <button className='buttons'><Link to={'/Login'} className='navLink'>Log-In</Link></button>
-                        <button className='buttons'><Link to={'/SignUp'} className='navLink'>Sign-Up</Link></button>
-                        <button className='buttons'><Link to='' className='navLink'>Log-Out</Link></button>
+                        {!window.localStorage.getItem('token') ? <button className='buttons'><Link to={'/Login'} className='navLink'>Log-In</Link></button> : ''}
+                        {window.localStorage.getItem('token') ? <div><button className='buttons'>Logged in as...</button><button className='buttons' onSubmit={console.log('test1')}>Log-Out</button></div> : ''}
                     </div>
                 </nav>
                 <div id='main-section'>
