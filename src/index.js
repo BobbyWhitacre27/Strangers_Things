@@ -1,11 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import '../src/style.css';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 
-import { Home, Posts, Profile, SignUp, LogIn, token, logOut } from './components/index';
+import { Home, Posts, Profile, SignUp, LogIn } from './components/index';
 
 const App = () => {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
+
+    const handleLogIn = (user) => {
+        setUser(user)
+        localStorage.setItem('user', JSON.stringify(user))
+    }
+
+    const logOut = () => {
+        setUser('')
+        localStorage.clear()
+    }
+
     return (
         <BrowserRouter>
             <div>
@@ -19,8 +31,9 @@ const App = () => {
                         <Link to={'/Profile'} className='navLink'>Profile</Link>
                     </div>
                     <div id='signInOutButtons'>
-                        {!window.localStorage.getItem('token') ? <button className='buttons'><Link to={'/Login'} className='navLink'>Log-In</Link></button> : ''}
-                        {window.localStorage.getItem('token') ? <div><button className='buttons'>Logged in as...</button><button className='buttons' onSubmit={console.log('test1')}>Log-Out</button></div> : ''}
+                        <div id='username'>{user?.username}</div>
+                        {!user?.username ? <button className='buttons'><Link to={'/Login'} className='navLink'>Log-In</Link></button> : ''}
+                        {user?.username ? <button id='logoutButton' className='buttons' onClick={logOut}>Log-Out</button> : ''}
                     </div>
                 </nav>
                 <div id='main-section'>
@@ -32,10 +45,10 @@ const App = () => {
                             <Posts />
                         </Route>
                         <Route path="/Profile">
-                            <Profile />
+                            <Profile user={user}/>
                         </Route>
                         <Route path="/Login">
-                            <LogIn />
+                            <LogIn handleLogIn={handleLogIn}/>
                         </Route>
                         <Route exact path="/SignUp">
                             <SignUp />

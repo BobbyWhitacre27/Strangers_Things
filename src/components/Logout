@@ -1,8 +1,0 @@
-import React, { useState } from 'react';
-
-  const logOut = () => {
-    
-    localStorage.clear()
-  }
-
-  export default logOut;

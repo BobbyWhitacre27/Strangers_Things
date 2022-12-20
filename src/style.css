@@ -3,11 +3,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
 
 
 #navbar {
-    background-color:rgb(20, 109, 73);
+    background-color: rgb(20, 109, 73);
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid black;
@@ -19,18 +19,18 @@
 #title {
     color: white;
     text-align: center;
-    width: 250px;
+    width: 350px;
 }
 
 #navlinks {
     text-align: center;
-    width: 250px;
+    width: 300px;
 }
 
 #signInOutButtons {
+    display: flex;
     text-align: right;
-    padding-right: 25px;
-    width: 250px;
+    width: 350px;
 }
 
 .navLink {
@@ -47,6 +47,16 @@
     color: white;
     background-color: black;
     border-radius: 25px;
+}
+
+#username {
+    display: flex;
+    width: 175px;
+    justify-content: right;
+    align-items: center;
+    color: white;
+    font-style: italic;
+    margin-right: 5px;
 }
 
 #main-section {
@@ -122,3 +132,39 @@ input {
 #loginPopUp {
     color: red;
 }
+
+#logoutButton {
+    text-decoration: underline;
+}
+
+#postingDiv {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    margin-left: 100px;
+    margin-right: 100px;
+    padding-bottom: 10px;
+}
+
+.postingFormEntry {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-left: 10px;
+    margin-right: 20px;
+}
+
+#descriptionInput {
+    width: 600px;
+    display: flex;
+
+}
+
+#titleInput {
+    width: 600px;
+} 
+
+#priceInput {
+    width: 600px;
+} 
