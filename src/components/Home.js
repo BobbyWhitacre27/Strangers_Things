@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 
-const Home = ({user}) => {
+const Home = ({ user }) => {
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
@@ -31,26 +31,27 @@ const Home = ({user}) => {
     const handleWillDeliver = (event) => {
         setWillDeliver(event.checked)
         console.log(willDeliver)
+        //need to get the will deliver boolean working
     }
 
     const createPost = async () => {
         try {
-            const response = await fetch('https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/posts', 
-            {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${user.token}`
-                },
-                body: JSON.stringify({
-                    post: {
-                        title: title,
-                        description: description,
-                        price: price,
-                        willDeliver: true
-                    }
+            const response = await fetch('https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/posts',
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${user.token}`
+                    },
+                    body: JSON.stringify({
+                        post: {
+                            title: title,
+                            description: description,
+                            price: price,
+                            willDeliver: true
+                        }
+                    })
                 })
-            })
             const addpost = await response.json();
             console.log(addpost)
         } catch (err) {
@@ -69,7 +70,7 @@ const Home = ({user}) => {
             <form id='postingDiv' onSubmit={handleCreatePost}>
                 <ul id='postingTitle' className='postingFormEntry'><h3>Title: </h3><input id='titleInput' type='text' value={title} onChange={handleTitle}></input></ul>
                 <ul id='postingPrice' className='postingFormEntry'><h3>Price: </h3><input id='priceInput' type='text' value={price} onChange={handlePrice}></input></ul>
-                <ul id='postingDescription' className='postingFormEntry'><h3>Description: </h3><input id='descriptionInput' type='text'value={description} onChange={handleDescription}></input></ul>
+                <ul id='postingDescription' className='postingFormEntry'><h3>Description: </h3><input id='descriptionInput' type='text' value={description} onChange={handleDescription}></input></ul>
                 <ul id='postingWillDeliver' className='postingFormEntry'><h3>Will deliver?</h3><input type="checkbox" value={willDeliver} onChange={handleWillDeliver}></input></ul>
                 <button className='buttons'>Submit</button>
             </form>

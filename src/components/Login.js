@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 
-const LogIn = ({handleLogIn}) => {
+const LogIn = ({ handleLogIn }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
- 
+
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -39,18 +39,18 @@ const LogIn = ({handleLogIn}) => {
                 })
             const newUser = await response.json();
             console.log(newUser)
+            newUser.success === true ? document.getElementById('loginPopUp').innerHTML = newUser.data.message : document.getElementById('loginPopUp').innerHTML = newUser.error.message;
             handleLogIn({
                 username,
                 token: newUser.data.token,
             })
-            newUser.success === true ? document.getElementById('loginPopUp').innerHTML = newUser.data.message : document.getElementById('loginPopUp').innerHTML = newUser.error.message;
         } catch (err) {
             console.log('err', err)
         }
     }
 
     const logOut = () => {
-        
+
         setToken('')
         setUsername('')
         console.log('logout')

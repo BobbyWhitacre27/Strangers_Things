@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import '../src/style.css';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
@@ -39,16 +39,16 @@ const App = () => {
                 <div id='main-section'>
                     <Switch>
                         <Route path="/Home">
-                            <Home user={user}/>
+                            <Home user={user} />
                         </Route>
                         <Route path="/Posts">
                             <Posts />
                         </Route>
                         <Route path="/Profile">
-                            <Profile user={user}/>
+                            <Profile user={user} />
                         </Route>
                         <Route path="/Login">
-                            <LogIn handleLogIn={handleLogIn}/>
+                            <LogIn handleLogIn={handleLogIn} />
                         </Route>
                         <Route exact path="/SignUp">
                             <SignUp />
