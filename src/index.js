@@ -39,7 +39,7 @@ const App = () => {
                 <div id='main-section'>
                     <Switch>
                         <Route path="/Home">
-                            <Home />
+                            <Home user={user}/>
                         </Route>
                         <Route path="/Posts">
                             <Posts />

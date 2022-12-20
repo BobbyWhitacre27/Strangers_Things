@@ -44,7 +44,6 @@ const LogIn = ({handleLogIn}) => {
                 token: newUser.data.token,
             })
             newUser.success === true ? document.getElementById('loginPopUp').innerHTML = newUser.data.message : document.getElementById('loginPopUp').innerHTML = newUser.error.message;
-            //newUser.success === true ? document.getElementById('username').innerHTML = `User: ${username}` : document.getElementById('loginPopUp').innerHTML = newUser.error.message;
         } catch (err) {
             console.log('err', err)
         }
