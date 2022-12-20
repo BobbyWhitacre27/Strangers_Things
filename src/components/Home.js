@@ -35,12 +35,12 @@ const Home = ({user}) => {
 
     const createPost = async () => {
         try {
-            const response = await Fetch('https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/posts', 
+            const response = await fetch('https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/posts', 
             {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': user.token
+                    'Authorization': `Bearer ${user.token}`
                 },
                 body: JSON.stringify({
                     post: {
@@ -53,7 +53,6 @@ const Home = ({user}) => {
             })
             const addpost = await response.json();
             console.log(addpost)
-
         } catch (err) {
             console.log('err', err)
         }
