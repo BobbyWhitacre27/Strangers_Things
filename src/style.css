@@ -168,3 +168,16 @@ input {
 #priceInput {
     width: 600px;
 } 
+
+#yourPost {
+    background-color: blue;
+    color: white;
+    width: fit-content;
+    margin-top: 15px;
+    padding: 5px;
+    border-radius: 25px;
+}
+
+#usernameSpan {
+    font-style: italic;
+}

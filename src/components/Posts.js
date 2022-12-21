@@ -1,16 +1,24 @@
 import React, { useState, useEffect } from 'react';
 
-const Posts = () => {
+const Posts = ({ user }) => {
     const [posts, setPosts] = useState([])
 
     const fetchPosts = async () => {
         try {
-            const response = await fetch('https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/posts');
+            const response = await fetch('https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/posts',
+                {
+                    method: "GET",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${user.token}`
+                    }
+                })
+                ;
             const apiPosts = await response.json();
             console.log(apiPosts)
             setPosts(apiPosts.data.posts);
         } catch (err) {
-            console.log('err')
+            console.log('err', err)
         }
     }
 
@@ -35,6 +43,7 @@ const Posts = () => {
                             <ul id='postedby'>Posted by: {e.author.username} {e.createdAt}</ul>
                             <ul id='postdelivery'>{e.willDeliver === true ? 'Will Deliver' : "Will Not Deliver"}</ul>
                         </div>
+                        {JSON.stringify(e.isAuthor) === 'true' ? <div id='yourPost'>Posted by you: <span id='usernameSpan'>{user.username}</span>.</div> : ''}
                     </div>)
                 })}
             </div>

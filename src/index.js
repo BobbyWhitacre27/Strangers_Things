@@ -42,7 +42,7 @@ const App = () => {
                             <Home user={user} />
                         </Route>
                         <Route path="/Posts">
-                            <Posts />
+                            <Posts user={user} />
                         </Route>
                         <Route path="/Profile">
                             <Profile user={user} />
