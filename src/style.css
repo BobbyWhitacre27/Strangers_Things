@@ -169,7 +169,12 @@ input {
     width: 600px;
 } 
 
-#yourPost {
+#yourPostDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+#yourPostInfo {
     background-color: blue;
     color: white;
     width: fit-content;
@@ -180,4 +185,13 @@ input {
 
 #usernameSpan {
     font-style: italic;
+}
+
+#deleteButton {
+    background-color:red;
+    color: white;
+    width: fit-content;
+    margin-top: 15px;
+    padding: 5px;
+    border-radius: 25px;
 }
