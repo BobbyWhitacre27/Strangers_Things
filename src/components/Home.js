@@ -13,7 +13,6 @@ const Home = ({ user }) => {
         setTitle('')
         setPrice('')
         setDescription('')
-        setWillDeliver(false)
     }
 
     const handleTitle = (event) => {
@@ -28,8 +27,8 @@ const Home = ({ user }) => {
         setDescription(event.target.value)
     }
 
-    const handleWillDeliver = (event) => {
-        setWillDeliver(event.checked)
+    const handleWillDeliver = () => {
+        setWillDeliver(!willDeliver)
         console.log(willDeliver)
         //need to get the will deliver boolean working
     }
@@ -48,7 +47,7 @@ const Home = ({ user }) => {
                             title: title,
                             description: description,
                             price: price,
-                            willDeliver: true
+                            willDeliver: willDeliver
                         }
                     })
                 })
@@ -62,7 +61,7 @@ const Home = ({ user }) => {
     return (user?.username ? (
         <div id="home">
             <h1>
-                Home Page
+                Home
             </h1>
             <br></br>
             <h2>Create a Post:</h2>

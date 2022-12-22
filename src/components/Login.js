@@ -50,7 +50,6 @@ const LogIn = ({ handleLogIn }) => {
     }
 
     const logOut = () => {
-
         setToken('')
         setUsername('')
         console.log('logout')

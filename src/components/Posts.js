@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 const Posts = ({ user }) => {
     const [posts, setPosts] = useState([])
-    const [POST_ID, setPOST_ID] = useState('');
+    const [messages, setMessages] = useState('')
 
     const fetchPosts = async () => {
         try {
@@ -22,16 +22,15 @@ const Posts = ({ user }) => {
         }
     }
 
-    const handleDelete = (event) => {
-        setPOST_ID(event.target.value)
-        deletePosts()
+    const handleDelete = async (id) => {
+        await deletePosts(id)
         fetchPosts()
     }
 
-    const deletePosts = async () => {
+    const deletePosts = async (id) => {
         try {
-            console.log(POST_ID)
-            const response = await fetch(`https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/posts/${POST_ID}`,
+
+            const response = await fetch(`https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/posts/${id}`,
                 {
                     method: "DELETE",
                     headers: {
@@ -41,6 +40,37 @@ const Posts = ({ user }) => {
                 });
             const deletePost = await response.json();
             console.log(deletePost)
+        } catch (err) {
+            console.log('err', err)
+        }
+    }
+
+    const handleMessages = (event) => {
+        setMessages(event.target.value)
+    }
+
+    const handleAddMessages = (id) => {
+        addMessages(id)
+        setMessages('')
+    }
+
+    const addMessages = async (id) => {
+        try {
+            const response = await fetch(`https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/posts/${id}/messages`,
+                {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${user.token}`
+                    },
+                    body: JSON.stringify({
+                        message: {
+                            content: messages
+                        }
+                    })
+                })
+            const addNewMessage = await response.json();
+            console.log(addNewMessage)
         } catch (err) {
             console.log('err', err)
         }
@@ -68,7 +98,22 @@ const Posts = ({ user }) => {
                             <ul id='postedby'>Posted by: {e.author.username} {e.createdAt}</ul>
                             <ul id='postdelivery'>{e.willDeliver === true ? 'Will Deliver' : "Will Not Deliver"}</ul>
                         </div>
-                        {JSON.stringify(e.isAuthor) === 'true' ? <div id='yourPostDiv'><div id='yourPostInfo'>Posted by you: <span id='usernameSpan'>{user.username}</span></div><button onClick={handleDelete} value={e._id} id='deleteButton'>Delete</button></div> : ''}
+                        {e.isAuthor === false ?
+                            <div id='messages'>
+                                <div id='showMessages'>{e.messages}</div>
+                                <div id='messageInput'>Message :<input onChange={handleMessages} type='text'></input>
+                                    <button onClick={() => handleAddMessages(e._id)} className='buttons' >Submit</button>
+                                </div>
+                            </div> : ''}
+
+                        {e.isAuthor === true ?
+                            <div id='yourPostDiv'>
+                                <div id='yourPostInfo'>
+                                    Posted by you: <span id='usernameSpan'>{user.username}</span>
+                                </div>
+                                <button onClick={() => handleDelete(e._id)} id='deleteButton'>Delete</button>
+                            </div> 
+                            : ''}
                     </div>)
                 })}
             </div>
