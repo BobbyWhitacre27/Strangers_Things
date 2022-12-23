@@ -7,6 +7,7 @@ import { Home, Posts, Profile, SignUp, LogIn } from './components/index';
 
 const App = () => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
+    const [posts, setPosts] = useState([])
 
     const handleLogIn = (user) => {
         setUser(user)
@@ -45,7 +46,7 @@ const App = () => {
                             <Posts user={user} />
                         </Route>
                         <Route path="/Profile">
-                            <Profile user={user} />
+                            <Profile user={user} posts={posts}/>
                         </Route>
                         <Route path="/Login">
                             <LogIn handleLogIn={handleLogIn} />

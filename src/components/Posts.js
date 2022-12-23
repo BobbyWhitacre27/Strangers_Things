@@ -7,7 +7,7 @@ const Posts = ({ user }) => {
     const fetchPosts = async () => {
         try {
             const response = await fetch('https://strangers-things.herokuapp.com/api/2209-ftb-ct-web-pt/posts',
-                {
+                { 
                     method: "GET",
                     headers: {
                         'Content-Type': 'application/json',
@@ -70,15 +70,15 @@ const Posts = ({ user }) => {
                     })
                 })
             const addNewMessage = await response.json();
-            console.log(addNewMessage)
+            console.log(addNewMessage);
+            setMessages('');
         } catch (err) {
             console.log('err', err)
         }
     }
 
-
     useEffect(() => {
-        fetchPosts();
+        fetchPosts()
     }, []);
 
     return (
