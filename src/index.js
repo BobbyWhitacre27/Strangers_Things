@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import './style.css';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 
 import { Home, Posts, Profile, SignUp, LogIn } from './components/index';
