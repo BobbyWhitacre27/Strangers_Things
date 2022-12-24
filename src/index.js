@@ -9,6 +9,8 @@ const App = () => {
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')))
     const [posts, setPosts] = useState([])
 
+
+    // Store user info in State & Local Storage 
     const handleLogIn = (user) => {
         setUser(user)
         localStorage.setItem('user', JSON.stringify(user))

@@ -7,8 +7,8 @@ const SignUp = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     postNewUser()
-    console.log(username)
-    console.log(password)
+    // console.log(username)
+    // console.log(password)
     setUsername('')
     setPassword('')
   }

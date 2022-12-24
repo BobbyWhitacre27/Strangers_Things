@@ -49,6 +49,10 @@
     border-radius: 25px;
 }
 
+.buttons:hover {
+    background-color: gray;
+}
+
 #username {
     display: flex;
     width: 175px;
@@ -199,6 +203,10 @@ input {
     text-decoration: underline;
 }
 
+#deleteButton:hover {
+    background-color: darkred;
+}
+
 #messages {
     margin-top: 15px;
     border-top: 1px solid black;
@@ -219,3 +227,26 @@ input {
     color: gray;
 }
 
+#deleteButtonProfile {
+    background-color:red;
+    color: white;
+    width: fit-content;
+    margin-top: 15px;
+    padding: 5px;
+    border-radius: 25px;
+    text-decoration: underline;
+}
+
+#deleteButtonProfile:hover {
+    background-color: darkred;
+}
+
+#deleteButtonProfileDiv {
+display: flex;
+justify-content: end;
+}
+
+#searchButton {
+    border: 1px solid black;
+    padding: 2px;
+}

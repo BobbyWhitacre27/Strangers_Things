@@ -38,7 +38,7 @@ const LogIn = ({ handleLogIn }) => {
                     )
                 })
             const newUser = await response.json();
-            console.log(newUser)
+            // console.log(newUser)
             newUser.success === true ? document.getElementById('loginPopUp').innerHTML = newUser.data.message : document.getElementById('loginPopUp').innerHTML = newUser.error.message;
             handleLogIn({
                 username,

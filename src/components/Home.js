@@ -13,6 +13,7 @@ const Home = ({ user }) => {
         setTitle('')
         setPrice('')
         setDescription('')
+        setWillDeliver(false)
     }
 
     const handleTitle = (event) => {
