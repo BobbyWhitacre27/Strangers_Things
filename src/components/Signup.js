@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 
 const SignUp = () => {
   const [username, setUsername] = useState('');
@@ -38,7 +39,7 @@ const SignUp = () => {
         })
       const newUser = await response.json();
       console.log(newUser)
-      newUser.success === true ? document.getElementById('welcomePopUp').innerHTML = `${newUser.data.message} Please ${"<a href='/Login'>click here</a>"} to login` : document.getElementById('welcomePopUp').innerHTML = newUser.error.message;
+      newUser.success === true ? document.getElementById('welcomePopUp').innerHTML = `${newUser.data.message} Please ${"<Link to='Login'><a href='/Login'>click here</a></Link>"} to login` : document.getElementById('welcomePopUp').innerHTML = newUser.error.message;
       handleUsername(newUser.user.username);
       handlePassword(newUser.user.password)
     } catch (err) {

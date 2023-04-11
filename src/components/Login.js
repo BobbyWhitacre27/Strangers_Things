@@ -73,7 +73,7 @@ const LogIn = ({ handleLogIn }) => {
                 </div>
             </form>
             <br></br>
-            <p>Don't have an account? <Link to="/Signup"><a href='/SignUp'>Sign-Up</a></Link></p>
+            <p>Don't have an account? <Link to="/SignUp"><a href='/SignUp'>Sign-Up</a></Link></p>
             <br></br>
 
             <h3 id='loginPopUp'></h3>
