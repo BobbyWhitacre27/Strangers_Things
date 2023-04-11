@@ -40,6 +40,9 @@ const App = () => {
                 </nav>
                 <div id='main-section'>
                     <Switch>
+                        <Route exact path="/">
+                            <Posts user={user}/>
+                        </Route>
                         <Route path="/Home">
                             <Home user={user} />
                         </Route>

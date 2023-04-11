@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 
+import { Home, Posts, Profile, SignUp, LogIn } from './components/index';
 
 const LogIn = ({ handleLogIn }) => {
     const [username, setUsername] = useState('');
@@ -71,7 +73,7 @@ const LogIn = ({ handleLogIn }) => {
                 </div>
             </form>
             <br></br>
-            <p>Don't have an account? <a href='/Signup'>Sign-Up</a></p>
+            <p>Don't have an account? <Link to="/Signup"><a href='/SignUp'>Sign-Up</a></Link></p>
             <br></br>
 
             <h3 id='loginPopUp'></h3>
