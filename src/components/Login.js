@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 
-import { Home, Posts, Profile, SignUp, LogIn } from './components/index';
+
 
 const LogIn = ({ handleLogIn }) => {
     const [username, setUsername] = useState('');
