@@ -67,7 +67,7 @@ const Home = ({ user }) => {
             <br></br>
             <h2>Create a Post:</h2>
             <br></br>
-            <form id='postingDiv' onSubmit={handleCreatePost}>
+            <form id='postDiv' onSubmit={handleCreatePost}>
                 <ul id='postingTitle' className='postingFormEntry'><h3>Title: </h3><input id='titleInput' type='text' value={title} onChange={handleTitle}></input></ul>
                 <ul id='postingPrice' className='postingFormEntry'><h3>Price: </h3><input id='priceInput' type='text' value={price} onChange={handlePrice}></input></ul>
                 <ul id='postingDescription' className='postingFormEntry'><h3>Description: </h3><input id='descriptionInput' type='text' value={description} onChange={handleDescription}></input></ul>
