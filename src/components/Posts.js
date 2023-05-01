@@ -86,6 +86,8 @@ const Posts = ({ user }) => {
         fetchPosts()
     }, []);
 
+
+
     return (
         <div id="posts">
             <h1>
@@ -96,6 +98,8 @@ const Posts = ({ user }) => {
             </div>
             <div id='postsDiv'>
                 {posts.map((e, i) => {
+                    const date = new Date(e.createdAt.replace(/-/g, '\/').replace(/T.+/, ''))
+                    const newDate = date.toLocaleDateString('en-US');
                     return (<div key={i}>
                         {e.title.includes(search) || e.description.includes(search) ?
                             <div id='postDiv'>
@@ -105,9 +109,10 @@ const Posts = ({ user }) => {
                                 </div>
                                 <ul id='postdescription'>{e.description}</ul>
                                 <div id='postbottom'>
-                                    <ul id='postedby'>Posted by: {e.author.username} {e.createdAt}</ul>
+                                    <ul id='postedby'>Posted by: {e.author.username}</ul>
                                     <ul id='postdelivery'>{e.willDeliver === true ? 'Will Deliver' : "Will Not Deliver"}</ul>
                                 </div>
+                                <div>{newDate}</div>
                                 {user && e.isAuthor === false ?
                                     <div id='messages'>
                                         <div id='showMessages'>{e.messages.map((a, i) => {
