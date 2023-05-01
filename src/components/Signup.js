@@ -53,10 +53,14 @@ const SignUp = () => {
         <h1 id='welcomeSignUp'>Sign-Up</h1>
         <p id='signUpInstructions'>To create an account please set up a username and password below.</p>
         <div>
+          <div>
           <label htmlFor='username'>Username:</label>
           <input type='text' name='username' value={username} onChange={handleUsername} />
+          </div>
+          <div>
           <label htmlFor='password'>Password:</label>
           <input type='password' name='password' value={password} onChange={handlePassword} />
+          </div>
           <button type='submit' className='button1'>Submit</button>
         </div>
         <div id='welcomePopUp'></div>

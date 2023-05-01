@@ -65,11 +65,15 @@ const LogIn = ({ handleLogIn }) => {
                 <h1 id='welcomeSignUp'>Log-In</h1>
                 <p id='signUpInstructions'>Please log-in to your account below.</p>
                 <div id='loginDiv'>
+                    <div>
                     <label htmlFor='username'>Username:</label>
                     <input type='text' name='username' value={username} onChange={handleUsername} />
+                    </div>
+                    <div>
                     <label htmlFor='password'>Password:</label>
                     <input type='password' name='password' value={password} onChange={handlePassword} />
-                    <button type='submit' className='button1'>Submit</button>
+                    </div>
+                   <button type='submit' className='button1'>Submit</button>
                 </div>
             </form>
             <br></br>
